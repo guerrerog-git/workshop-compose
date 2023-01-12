@@ -1,0 +1,36 @@
+version: '3.4'
+
+services:
+  microservices.api.productcatalog:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "6104:80"
+
+  microservices.api.promotionservice:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "6105:80"
+
+
+  microservices.api.shoppingcart:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - Services__Products=http://microservices.api.productcatalog
+      - Services__Promotions=http://microservices.api.promotionservice
+    ports:
+      - "6106:80"
+
+  microservices.api.gateway:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "6107:80"
+
+  microservices.api.authentication:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "6108:80"
+

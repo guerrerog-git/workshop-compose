@@ -1,0 +1,36 @@
+version: '3.4'
+
+services:
+  microservices.api.productcatalog:
+    image: ${DOCKER_REGISTRY-}microservicesapiproductcatalog
+    build:
+      context: .
+      dockerfile: Microservices.API.ProductCatalog/Dockerfile
+  microservices.api.promotionservice:
+    image: ${DOCKER_REGISTRY-}microservicesapipromotionservice
+    build:
+      context: .
+      dockerfile: Microservices.API.PromotionService/Dockerfile
+
+  microservices.api.shoppingcart:
+    image: ${DOCKER_REGISTRY-}microservicesapishoppingcart
+    build:
+      context: .
+      dockerfile: Microservices.API.ShoppingCart/Dockerfile
+  microservices.api.gateway:
+    image: ${DOCKER_REGISTRY-}microservicesapigateway
+    build:
+      context: .
+      dockerfile: Microservices.API.Gateway/Dockerfile
+  microservices.api.authentication:
+    image: ${DOCKER_REGISTRY-}microservicesapiauthentication
+    build:
+      context: .
+      dockerfile: Microservices.API.Authentication/Dockerfile
+
+networks:
+  default:
+    name: workshop-network
+
+
+
